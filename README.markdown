@@ -5,7 +5,7 @@ This is the sample application for
 by [Michael Hartl](http://michaelhartl.com/).
 
 
-
+http://stark-meadow-5634.heroku.com/
 
 == Welcome to Rails
 
