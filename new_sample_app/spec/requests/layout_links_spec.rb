@@ -2,21 +2,19 @@ require 'spec_helper'
 #the following was added as part of integration testing.  These tests can be called application wide and are not bound to a specific request URL
 describe "LayoutLinks" do
 
-  describe "LayoutLinks" do
     it "Should have the right links on the layout" do
       visit root_path
       click_link "About"
       response.should have_selector('title', :content => "About")
       click_link "Help"
-      response.should ('title', :content => "Help")
+      response.should have_selector('title', :content => "Help")
       click_link "Contact"
-      response.should ('title', :content => "Contact")
+      response.should have_selector('title', :content => "Contact")
       click_link "Home"
-      response.should ('title', :content => "Home")
+      response.should have_selector('title', :content => "Home")
       click_link "Sign up now!"
-      response.should ('title', :content => "Sign up")
+      response.should have_selector('title', :content => "Sign up")
     end
-  end
 
 	it "should havea  Home page at '/'" do
 		get '/'
