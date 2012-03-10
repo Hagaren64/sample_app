@@ -9,4 +9,8 @@ module ApplicationHelper
       "#{base_title} | #{@title}"						#string interpolation
     end													#note instance variable returns as empty string if nil
   end
+  
+  def logo
+    image_tag("logo.png", :alt => "Sample App", :class => "round")
+  end
 end
