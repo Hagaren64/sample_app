@@ -52,6 +52,11 @@ email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     return nil  if user.nil?
     return user if user.has_password?(submitted_password)
    end
+   def self.authenticate_with_salt(id, cookie_salt)
+       user = find_by_id(id)
+       (user && user.salt == cookie_salt) ? user : nil
+     end
+   
   private
 
     #method to perform encryption, gets called by before_save (7.1)
