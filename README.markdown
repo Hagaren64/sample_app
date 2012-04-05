@@ -8,7 +8,12 @@ ROLLING BACK CHANGES<br>
 	<t>Source: <a href="http://stackoverflow.com/questions/6481575/undo-a-merge-by-pull-request">CLICK HERE</a><br>
 
 
+<<<<<<< HEAD
 Ruby on Rails Tutorial:
+=======
+Ruby on Rails Tutorial: sample application
+
+>>>>>>> origin/master
 This is the sample application for
 [*Ruby on Rails Tutorial: Learn Rails by Example*](http://railstutorial.org/)
 by [Michael Hartl](http://michaelhartl.com/).
