@@ -4,12 +4,17 @@ module SessionsHelper
   def sign_in_remember(user)
     cookies.permanent.signed[:remember_token] = [user.id, user.salt]
     self.current_user = user
-    user.updated_at = Time.now
+    #=== user.touch to update the update_at ===
+    user.touch
   end
   
   def sign_in(user)
     cookies.signed[:remember_token] = [user.id, user.salt]
     self.current_user = user
+  end
+  
+  def remember
+    @remember = user
   end
   
   def current_user=(user)
