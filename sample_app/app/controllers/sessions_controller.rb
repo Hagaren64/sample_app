@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
 
+# Source used for remember_me
+# http://railscasts.com/episodes/274-remember-me-reset-password
+
   def new
     @title = "Sign in"
   end

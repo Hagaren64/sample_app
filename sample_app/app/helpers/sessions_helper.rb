@@ -5,6 +5,7 @@ module SessionsHelper
     cookies.permanent.signed[:remember_token] = [user.id, user.salt]
     self.current_user = user
     #=== user.touch to update the update_at ===
+    # http://rubyquicktips.com/post/359479185/update-with-a-touch
     user.touch
   end
   
