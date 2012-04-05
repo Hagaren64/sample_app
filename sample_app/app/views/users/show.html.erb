@@ -13,7 +13,7 @@
 		<strong><font color="red">Last Account Activity:</strong><br>
 			<!-- <%= @user_remember =%></font>     // this doesn't work...-->
 			<!-- updated_at only takes the last EDIT and not last login...  can't figure it out -->
-			<%= ((Time.now - @user.updated_at)/1.hour).round(1) %> hours ago</font>
+			<%= ((Time.now - @user.updated_at)/1.hour) %> hours ago</font>
     </td>
   </tr>
 </table>
