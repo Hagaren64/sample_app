@@ -16,10 +16,9 @@ class UsersController < ApplicationController
 	#once @user is defined properly, calling @user.save is all that’s needed to complete the registration
     if @user.save
       # Handle a successful save.
-      sign_in @user
-  	  flash[:success] = "Welcome to the Sample App!"
-  	  redirect_to @user
-  	  #could have also said redirect_to user_path(@user)
+	  flash[:success] = "Welcome to the Sample App!"
+	  redirect_to @user
+	  #could have also said redirect_to user_path(@user)
     else
 		#re-render the signup page if invalid signup data is received.
       @title = "Sign up"
