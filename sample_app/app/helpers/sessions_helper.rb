@@ -1,7 +1,14 @@
 module SessionsHelper
   
-  def sign_in(user)
+  # have to add permanent to remember
+  def sign_in_remember(user)
     cookies.permanent.signed[:remember_token] = [user.id, user.salt]
+    self.current_user = user
+    @user_remember=Time.now
+  end
+  
+  def sign_in(user)
+    cookies.signed[:remember_token] = [user.id, user.salt]
     self.current_user = user
   end
   
