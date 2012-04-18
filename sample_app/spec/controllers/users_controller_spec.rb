@@ -85,6 +85,23 @@ describe UsersController do
     	get :show, :id => @user
     	response.should not_be_success
     end
+    
+    it "Users who are signed in can see the list of all users (/users/)" do
+    	@user2 = test_sign_in(Factory(:user, :name => "JT", :email => "jt@example.com", :pub => "false"))
+    	get :show
+    	response.should be_success
+    end
+    
+    it "Users who are not signed can access the list of all users" do
+    	get :show
+    	response.should be_success
+    end
+    
+    it "But for users who are not signed in, the list of all users contains only users whose profiles are public" do
+    	@user2 = Factory(:user, :name => "JT", :email => "jt@example.com", :pub => "false")
+    	get :show, :id => @user
+    	response.should not_be_success
+    end
   
     it "should be successful" do
       get :show, :id => @user
