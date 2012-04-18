@@ -16,7 +16,7 @@ describe UsersController do
 
       before(:each) do
         @user = test_sign_in(Factory(:user))
-        second = Factory(:user, :name => "Bob", :email => "another@example.com")
+        second = Factory(:user, :name => "Bob", :email => "another@example.com", :pub => "false")
         third  = Factory(:user, :name => "Ben", :email => "another@example.net")
         
         30.times do
@@ -73,6 +73,12 @@ describe UsersController do
     
     before(:each) do
       @user = Factory(:user)
+    end
+    
+    it "should see all public and private users if logged in" do
+    	@user2 = test_sign_in(Factory(:user, :name => "JT", :email => "jt@example.com", :pub => "false"))
+    	get :show, :id => @user
+    	response.should be_success
     end
   
     it "should be successful" do
