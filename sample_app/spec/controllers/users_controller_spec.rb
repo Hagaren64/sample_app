@@ -240,7 +240,7 @@ describe UsersController do
       
       before(:each) do
         @attr = { :name => "", :email => "", :password => "",
-                  :password_confirmation => "" }
+                  :password_confirmation => "", :pub => "" }
       end
       
       it "should render the 'edit' page" do
