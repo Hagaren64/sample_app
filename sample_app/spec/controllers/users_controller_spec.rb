@@ -75,10 +75,15 @@ describe UsersController do
       @user = Factory(:user)
     end
     
-    it "should see all public and private users if logged in" do
+    it "Users who are signed in can see all user profiles (/users/n)" do
     	@user2 = test_sign_in(Factory(:user, :name => "JT", :email => "jt@example.com", :pub => "false"))
     	get :show, :id => @user
     	response.should be_success
+    end
+    
+    it "Users who are not signed in can see only public profiles" do
+    	get :show, :id => @user
+    	response.should not_be_success
     end
   
     it "should be successful" do
@@ -264,7 +269,7 @@ describe UsersController do
       
       before(:each) do
         @attr = { :name => "New Name", :email => "user@example.org",
-                  :password => "barbaz", :password_confirmation => "barbaz" }
+                  :password => "barbaz", :password_confirmation => "barbaz", :pub => "false" }
       end
       
       it "should change the user's attributes" do
@@ -273,6 +278,7 @@ describe UsersController do
         @user.name.should  == @attr[:name]
         @user.email.should == @attr[:email]
         @user.encrypted_password.should == assigns(:user).encrypted_password
+        @user.pub.should == @attr[:pub]
       end
       
       it "should have a flash message" do
