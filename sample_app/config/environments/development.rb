@@ -1,5 +1,5 @@
 SampleApp::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb
+  # Settings specified here will take precedence over those in config/environment.rb
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
@@ -19,8 +19,4 @@ SampleApp::Application.configure do
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
-
-  # Only use best-standards-support built into browsers
-  config.action_dispatch.best_standards_support = :builtin
 end
-
