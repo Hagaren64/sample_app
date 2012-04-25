@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   	if signed_in?
     	@ispub_user = User.all
     else
-    	@ispub_user = User.find_all_by_pub("true")
+    	@ispub_user = User.find_all_by_pub(true)
     end	
     @users = @ispub_user.paginate(:page => params[:page])
     @title = "All users"
