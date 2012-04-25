@@ -16,9 +16,20 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(:page => params[:page])
-    @title = @user.name
+  	if signed_in?
+    	@user = User.find(params[:id])
+    	@microposts = @user.microposts.paginate(:page => params[:page])
+    	@title = @user.name
+    elsif User.find_by_id(params[:id]).pub
+    	@user = User.find(params[:id])
+    	@microposts = @user.microposts.paginate(:page => params[:page])
+    	@title = @user.name
+    else
+   		@user = User.new(params[:user])
+    	flash.now[:error] = "Must be registered to view this user"
+    	@title="Sign Up"
+    	render 'new'
+    end
   end
 
   def following
