@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate,
-                :only => [:index, :edit, :update, :destroy,
+                :only => [:edit, :update, :destroy,
                           :followers, :following]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user,   :only => :destroy
@@ -9,9 +9,9 @@ class UsersController < ApplicationController
   	if signed_in?
     	@ispub_user = User.all
     else
-    	@ispub_user = User.find_by_pub("true")
+    	@ispub_user = User.find_all_by_pub("true")
     end	
-    @users = User.paginate(:page => params[:page])
+    @users = @ispub_user.paginate(:page => params[:page])
     @title = "All users"
   end
   
